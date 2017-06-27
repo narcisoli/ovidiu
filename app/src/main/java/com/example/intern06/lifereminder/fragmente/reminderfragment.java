@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.PopupMenu;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,6 +19,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.etsy.android.grid.StaggeredGridView;
 import com.example.intern06.lifereminder.FirebaseHandler;
@@ -49,7 +53,7 @@ public class reminderfragment extends Fragment {
     private View view;
     private ImageView menu;
     boolean a=true;
-
+    private ImageView menu1;
 
     public static reminderfragment newInstance() {
         reminderfragment fragmentFirst = new reminderfragment();
@@ -71,6 +75,7 @@ public class reminderfragment extends Fragment {
 
         view = inflater.inflate(R.layout.reminderfragment, container, false);
         menu = (ImageView) view.findViewById(R.id.menu);
+        menu1 = (ImageView) view.findViewById(R.id.more);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,6 +134,30 @@ public class reminderfragment extends Fragment {
             }
         });
 
+        menu1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu menu = new PopupMenu (view.getContext(), view);
+                menu.setOnMenuItemClickListener (new PopupMenu.OnMenuItemClickListener ()
+                {
+                    @Override
+                    public boolean onMenuItemClick (MenuItem item)
+                    {
+                        int id = item.getItemId();
+                        switch (id)
+                        {
+                            case R.id.item_delete:
+                                Toast.makeText(view.getContext(), "delete", Toast.LENGTH_SHORT).show(); break;
+                            case R.id.item_share: Toast.makeText(view.getContext(), "share", Toast.LENGTH_SHORT).show(); break;
+                            case R.id.item_edit: Toast.makeText(view.getContext(), "edit", Toast.LENGTH_SHORT).show(); break;
+                        }
+                        return true;
+                    }
+                });
+                menu.inflate (R.menu.menu);
+                menu.show();
+            }
+        });
         searchview = (SearchView) view.findViewById(R.id.searchview);
         numetext = (TextView) view.findViewById(R.id.numetext);
         searchview.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
@@ -166,6 +195,5 @@ public class reminderfragment extends Fragment {
                 aux.add(reminderList.get(i));
         adaptor.notifyDataSetChanged();
     }
-
 
 }
