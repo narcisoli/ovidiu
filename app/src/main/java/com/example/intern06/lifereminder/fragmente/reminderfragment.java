@@ -75,7 +75,7 @@ public class reminderfragment extends Fragment {
 
         view = inflater.inflate(R.layout.reminderfragment, container, false);
         menu = (ImageView) view.findViewById(R.id.menu);
-        menu1 = (ImageView) view.findViewById(R.id.more);
+
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,30 +137,6 @@ public class reminderfragment extends Fragment {
 
 
 
-        menu1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PopupMenu menu = new PopupMenu (view.getContext(), view);
-                menu.setOnMenuItemClickListener (new PopupMenu.OnMenuItemClickListener ()
-                {
-                    @Override
-                    public boolean onMenuItemClick (MenuItem item)
-                    {
-                        int id = item.getItemId();
-                        switch (id)
-                        {
-                            case R.id.item_delete:
-                                Toast.makeText(view.getContext(), "delete", Toast.LENGTH_SHORT).show(); break;
-                            case R.id.item_share: Toast.makeText(view.getContext(), "share", Toast.LENGTH_SHORT).show(); break;
-                            case R.id.item_edit: Toast.makeText(view.getContext(), "edit", Toast.LENGTH_SHORT).show(); break;
-                        }
-                        return true;
-                    }
-                });
-                menu.inflate (R.menu.menu);
-                menu.show();
-            }
-        });
 
 
 
