@@ -2,12 +2,14 @@ package com.example.intern06.lifereminder.adaptori;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -44,6 +46,7 @@ public class adaptorreminder extends ArrayAdapter<reminder> implements Filterabl
             view = layoutInflater.inflate(layoutResource, null);
 
         }
+        RelativeLayout relativeLayout=(RelativeLayout)view.findViewById(R.id.relfundal);
         TextView textnume=(TextView)view.findViewById(R.id.reminderdata);
         TextView descrioere=(TextView)view.findViewById(R.id.remindertext);
 
@@ -54,6 +57,8 @@ public class adaptorreminder extends ArrayAdapter<reminder> implements Filterabl
         if (ev != null) {
             textnume.setText(ev.getData());
             descrioere.setText(ev.getText());
+            relativeLayout.setBackgroundColor(ev.getCuloarefundal());
+            Log.i("Culori", ev.getCuloarefundal()+ev.getCuloaretext()+ev.getItalic()+ev.getBold()+"");
         }
 
         return view;

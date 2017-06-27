@@ -22,6 +22,7 @@ import com.example.intern06.lifereminder.R;
 import com.example.intern06.lifereminder.adaptori.adaptorreminder;
 import com.example.intern06.lifereminder.obiecte.reminder;
 
+import com.example.intern06.lifereminder.sql.ReminderDatabase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,6 +44,8 @@ public class reminderfragment extends Fragment {
     private List<reminder> aux=new ArrayList<>();
     private SearchView searchview;
     private TextView numetext;
+    private ReminderDatabase db;
+    private View view;
 
 
     public static reminderfragment newInstance() {
@@ -52,32 +55,24 @@ public class reminderfragment extends Fragment {
 
 
     @Override
+    public void onResume() {
+        super.onResume();
+        db = new ReminderDatabase(view.getContext());
+        reminderList = db.getReminders();
+        aux = reminderList;
+        adaptor.notifyDataSetChanged();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.reminderfragment, container, false);
-        FirebaseDatabase.getInstance().getReference().child("Reminder").child(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                reminderList.clear();
-                for (DataSnapshot ds:dataSnapshot.getChildren()) {
-                    reminder aux=ds.getValue(reminder.class);
-                    reminderList.add(aux);
-
-                }
-
-
-                Collections.reverse(reminderList);
-               aux=reminderList;
-                adaptor.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+         view = inflater.inflate(R.layout.reminderfragment, container, false);
+        db=new ReminderDatabase(view.getContext());
+        reminderList=db.getReminders();
+        aux=reminderList;
         floatingActionButton = (com.github.clans.fab.FloatingActionButton) view.findViewById(R.id.fabreminder);
         adaptor = new adaptorreminder(view.getContext(), R.layout.adaptorreminder, aux);
+
         listView = (StaggeredGridView) view.findViewById(R.id.listareminder);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {

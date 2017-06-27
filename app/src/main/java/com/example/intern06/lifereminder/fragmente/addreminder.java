@@ -22,6 +22,7 @@ import com.etsy.android.grid.StaggeredGridView;
 import com.example.intern06.lifereminder.R;
 import com.example.intern06.lifereminder.adaptori.adaptorreminder;
 import com.example.intern06.lifereminder.obiecte.reminder;
+import com.example.intern06.lifereminder.sql.ReminderDatabase;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -52,6 +53,8 @@ public class addreminder extends Fragment {
     private List<String> sugesiiList=new ArrayList<>();
     private StaggeredGridView gridView;
     private ImageView verif;
+    private ReminderDatabase db;
+    int culoarefundal=-1;
 
 
     @Override
@@ -62,10 +65,12 @@ public class addreminder extends Fragment {
         verif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy  HH:mm ss");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy HH mm ss");
                 String currentDateandTime = sdf.format(new Date());
-                reminder rem=new reminder(0,"",currentDateandTime);
-                FirebaseDatabase.getInstance().getReference().child("Reminder").child(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()).child(currentDateandTime).setValue(rem);
+                db=new ReminderDatabase(view.getContext());
+                reminder rem=new reminder(0,editText.getText().toString(),currentDateandTime,0,5454,0,0,0);
+                db.addReminder(rem);
+               getActivity().getSupportFragmentManager().popBackStack();
             }
         });
 
@@ -85,7 +90,7 @@ public class addreminder extends Fragment {
                     @Override
                     public void OnColorClick(View v, int color) {
                         editText.setBackgroundColor(color);
-                        editText.setDrawingCacheBackgroundColor(color);
+                        culoarefundal=color;
                     }
                 });
                 //customize the dialog however you want
