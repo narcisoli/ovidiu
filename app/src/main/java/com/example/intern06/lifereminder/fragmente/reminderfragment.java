@@ -174,6 +174,7 @@ public class reminderfragment extends Fragment {
                 adaptor.notifyDataSetChanged();
             }
         });
+
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
