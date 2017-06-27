@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <RelativeLayout
+       android:id="@+id/barasus"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:layout_alignParentTop="true"
+       android:background="@color/fundalverde">
+      <SearchView
+          android:layout_width="wrap_content"
+          android:layout_centerVertical="true"
+          android:layout_alignParentRight="true"
+          android:id="@+id/searchview"
+          android:layout_height="wrap_content"></SearchView>
+      <ImageView
+          android:layout_width="19dp"
+          android:layout_height="19dp"
+          android:layout_alignParentLeft="true"
+          android:src="@drawable/menu"
+          android:layout_centerVertical="true"
+          android:layout_marginLeft="5dp"
+          />
+
+      <com.example.intern06.lifereminder.customviews.TextFont
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:layout_centerVertical="true"
+          android:id="@+id/numetext"
+          android:text="Life Reminder"
+          android:textColor="@color/white"
+          android:textSize="@dimen/titlu" />
+
+   </RelativeLayout>
+
+   <com.etsy.android.grid.StaggeredGridView
+       android:layout_below="@id/barasus"
+       android:layout_marginTop="5dp"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       app:column_count="2"
+       android:id="@+id/listareminder">
+   </com.etsy.android.grid.StaggeredGridView>
+<com.github.clans.fab.FloatingActionButton
+    android:layout_width="wrap_content"
+    app:fab_size="normal"
+    android:id="@+id/fabreminder"
+    app:fab_colorRipple="@color/black"
+    app:fab_shadowColor="@color/black"
+    app:fab_showShadow="true"
+    android:scaleX=".8"
+    android:scaleY=".8"
+   android:src="@drawable/fab_add"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        card_view:cardBackgroundColor="@color/white"
+        card_view:cardElevation="5dp"
+        card_view:theme="@style/CardView">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitStart"
+        android:src="@drawable/st"
+        android:adjustViewBounds="true"
+        android:id="@+id/iamginerecomandare"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp" />
+    <com.example.intern06.lifereminder.customviews.TextFont
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numerecomandare"
+        android:layout_below="@id/iamginerecomandare"
+        android:textColor="@color/black"
+      android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="test"
+        android:textSize="@dimen/normal"
+        />
+    <com.example.intern06.lifereminder.customviews.TextFont
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/descriererecomandare"
+        android:layout_below="@id/numerecomandare"
+        android:textColor="@color/black"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="test"
+        android:textSize="@dimen/normal"
+        />
+        </RelativeLayout>
+</android.support.v7.widget.CardView>
+
+</RelativeLayout>
