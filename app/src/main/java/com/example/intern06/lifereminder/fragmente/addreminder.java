@@ -68,7 +68,7 @@ public class addreminder extends Fragment {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy HH mm ss");
                 String currentDateandTime = sdf.format(new Date());
                 db=new ReminderDatabase(view.getContext());
-                reminder rem=new reminder(0,editText.getText().toString(),currentDateandTime,0,5454,0,0,0);
+                reminder rem=new reminder(0,editText.getText().toString(),currentDateandTime,0,culoarefundal,0,0,0);
                 db.addReminder(rem);
                getActivity().getSupportFragmentManager().popBackStack();
             }

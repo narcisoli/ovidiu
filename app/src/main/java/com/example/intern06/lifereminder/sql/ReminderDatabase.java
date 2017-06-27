@@ -64,12 +64,12 @@ public class ReminderDatabase extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(DATA, reminder.getData());
         values.put(TEXT, reminder.getText());
-        values.put(STATUS, reminder.getText());
-        values.put(CULOARETEXT, reminder.getText());
-        values.put(CULOAREFUNDAL, reminder.getText());
-        values.put(ITALIC, reminder.getText());
-        values.put(SIZE, reminder.getText());
-        values.put(BOLD, reminder.getText());
+        values.put(STATUS, reminder.getStatus());
+        values.put(CULOARETEXT, reminder.getCuloaretext());
+        values.put(CULOAREFUNDAL, reminder.getCuloarefundal());
+        values.put(ITALIC, reminder.getItalic());
+        values.put(SIZE, reminder.getTextsize());
+        values.put(BOLD, reminder.getBold());
 
 
         db.insert(TABLE_CONTACTS, null, values);

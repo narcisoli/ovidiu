@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -41,11 +42,13 @@ public class reminderfragment extends Fragment {
     StaggeredGridView listView;
     private adaptorreminder adaptor;
     private List<reminder> reminderList = new ArrayList<>();
-    private List<reminder> aux=new ArrayList<>();
+    private List<reminder> aux = new ArrayList<>();
     private SearchView searchview;
     private TextView numetext;
     private ReminderDatabase db;
     private View view;
+    private ImageView menu;
+    boolean a=true;
 
 
     public static reminderfragment newInstance() {
@@ -66,10 +69,27 @@ public class reminderfragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-         view = inflater.inflate(R.layout.reminderfragment, container, false);
-        db=new ReminderDatabase(view.getContext());
-        reminderList=db.getReminders();
-        aux=reminderList;
+        view = inflater.inflate(R.layout.reminderfragment, container, false);
+        menu = (ImageView) view.findViewById(R.id.menu);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(a){
+                listView.setColumnCount(1);
+                a=false;
+                adaptor.notifyDataSetChanged();}
+                else
+                {
+                    a=true;
+                    listView.setColumnCount(2);
+                    adaptor.notifyDataSetChanged();
+                }
+            }
+        });
+
+        db = new ReminderDatabase(view.getContext());
+        reminderList = db.getReminders();
+        aux = reminderList;
         floatingActionButton = (com.github.clans.fab.FloatingActionButton) view.findViewById(R.id.fabreminder);
         adaptor = new adaptorreminder(view.getContext(), R.layout.adaptorreminder, aux);
 
@@ -109,17 +129,17 @@ public class reminderfragment extends Fragment {
             }
         });
 
-        searchview=(SearchView)view.findViewById(R.id.searchview);
-        numetext=(TextView)view.findViewById(R.id.numetext);
+        searchview = (SearchView) view.findViewById(R.id.searchview);
+        numetext = (TextView) view.findViewById(R.id.numetext);
         searchview.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus)
+                if (hasFocus)
                     numetext.setVisibility(View.GONE);
                 else
                     numetext.setVisibility(View.VISIBLE);
-                    aux=reminderList;
-                    adaptor.notifyDataSetChanged();
+                aux = reminderList;
+                adaptor.notifyDataSetChanged();
             }
         });
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -141,8 +161,8 @@ public class reminderfragment extends Fragment {
 
     private void updatelist(String query) {
         aux.clear();
-        for(int i=0;i<reminderList.size();i++)
-            if(reminderList.get(i).getText().contains(query))
+        for (int i = 0; i < reminderList.size(); i++)
+            if (reminderList.get(i).getText().contains(query))
                 aux.add(reminderList.get(i));
         adaptor.notifyDataSetChanged();
     }
