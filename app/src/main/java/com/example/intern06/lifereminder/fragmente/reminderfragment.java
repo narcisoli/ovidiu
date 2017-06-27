@@ -162,6 +162,8 @@ public class reminderfragment extends Fragment {
             }
         });
 
+
+
         searchview = (SearchView) view.findViewById(R.id.searchview);
         numetext = (TextView) view.findViewById(R.id.numetext);
         searchview.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
