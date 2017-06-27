@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\Narcis\Documents\androidprojects\LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b\Documents.iml" filepath="C:\Users\Narcis\Documents\androidprojects\LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b\Documents.iml" />
-      <module fileurl="file://C:\Users\Narcis\Documents\androidprojects\LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b\LifeRem.iml" filepath="C:\Users\Narcis\Documents\androidprojects\LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b\LifeRem.iml" />
-      <module fileurl="file://C:\Users\Narcis\Documents\androidprojects\LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b\LifeReminder.iml" filepath="C:\Users\Narcis\Documents\androidprojects\LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b\LifeReminder.iml" />
+      <module fileurl="file://C:/Users/Narcis/Documents/androidprojects/LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b/Documents.iml" filepath="C:/Users/Narcis/Documents/androidprojects/LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b/Documents.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Life.iml" filepath="$PROJECT_DIR$/Life.iml" />
+      <module fileurl="file://C:/Users/Narcis/Documents/androidprojects/LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b/LifeRem.iml" filepath="C:/Users/Narcis/Documents/androidprojects/LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b/LifeRem.iml" />
+      <module fileurl="file://C:/Users/Narcis/Documents/androidprojects/LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b/LifeReminder.iml" filepath="C:/Users/Narcis/Documents/androidprojects/LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b/LifeReminder.iml" />
       <module fileurl="file://$PROJECT_DIR$/LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b.iml" filepath="$PROJECT_DIR$/LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Narcis\Documents\androidprojects\LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b\lifereminder2.iml" filepath="C:\Users\Narcis\Documents\androidprojects\LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b\lifereminder2.iml" />
+      <module fileurl="file://C:/Users/Narcis/Documents/androidprojects/LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b/lifereminder2.iml" filepath="C:/Users/Narcis/Documents/androidprojects/LiveReminder-develop-6d8ce8afe9ec3f0ad4b3089617f6d6cdc14a9e2b/lifereminder2.iml" />
     </modules>
   </component>
 </project>
