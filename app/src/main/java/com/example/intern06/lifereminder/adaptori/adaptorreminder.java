@@ -58,6 +58,7 @@ public class adaptorreminder extends ArrayAdapter<reminder> implements Filterabl
 
 
 
+
         ev=getItem(position);
 
         if (ev != null) {
