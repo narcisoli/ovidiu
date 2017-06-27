@@ -3,8 +3,10 @@ package com.example.intern06.lifereminder.fragmente;
 
 import android.annotation.SuppressLint;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,13 +52,24 @@ public class addreminder extends Fragment {
     int culoaretext=-16777216;
     int italic=0;
     int bold=0;
+
     int textsize=15;
     private ImageView textColor;
     private ImageView textItalic;
     private ImageView textSize;
     private ImageView textBold;
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        culoarefundal = 1;
+        culoaretext = -16777216;
+        italic = 0;
+        bold = 0;
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
@@ -68,7 +81,7 @@ public class addreminder extends Fragment {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy HH mm ss");
                 String currentDateandTime = sdf.format(new Date());
                 db=new ReminderDatabase(view.getContext());
-                reminder rem=new reminder(0,editText.getText().toString(),currentDateandTime,culoaretext,culoarefundal,0,0,0);
+                reminder rem=new reminder(0,editText.getText().toString(),currentDateandTime,culoaretext,culoarefundal,bold,italic,0);
                 db.addReminder(rem);
                getActivity().getSupportFragmentManager().popBackStack();
             }
@@ -107,9 +120,33 @@ public class addreminder extends Fragment {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
-                textItalic.setBackgroundColor(R.color.fundalverde);
-                italic=1;
-                editText.setTypeface(null, Typeface.ITALIC);
+                if(italic==1){
+                    textItalic.setBackgroundColor(R.color.white);
+                    italic=0;
+                    editText.setTypeface(null, Typeface.NORMAL);
+                }
+                else{
+                    textItalic.setBackgroundColor(R.color.fundalverde);
+                    italic=1;
+                    editText.setTypeface(null, Typeface.ITALIC);
+                }
+
+            }
+        });
+        textBold.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View v) {
+                if(bold==1){
+                    textBold.setBackgroundColor(R.color.white);
+                    bold=0;
+                    editText.setTypeface(null, Typeface.NORMAL);
+                }
+                else{
+                    textBold.setBackgroundColor(R.color.fundalverde);
+                    bold=1;
+                    editText.setTypeface(null, Typeface.BOLD);
+                }
             }
         });
 

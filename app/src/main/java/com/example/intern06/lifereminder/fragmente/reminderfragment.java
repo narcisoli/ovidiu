@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.PopupMenu;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,6 +19,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.etsy.android.grid.StaggeredGridView;
 import com.example.intern06.lifereminder.FirebaseHandler;
@@ -49,7 +53,7 @@ public class reminderfragment extends Fragment {
     private View view;
     private ImageView menu;
     boolean a=true;
-
+    private ImageView menu1;
 
     public static reminderfragment newInstance() {
         reminderfragment fragmentFirst = new reminderfragment();
@@ -71,6 +75,7 @@ public class reminderfragment extends Fragment {
 
         view = inflater.inflate(R.layout.reminderfragment, container, false);
         menu = (ImageView) view.findViewById(R.id.menu);
+
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,6 +136,10 @@ public class reminderfragment extends Fragment {
 
 
 
+
+
+
+
         searchview = (SearchView) view.findViewById(R.id.searchview);
         numetext = (TextView) view.findViewById(R.id.numetext);
         searchview.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
@@ -144,6 +153,7 @@ public class reminderfragment extends Fragment {
                 adaptor.notifyDataSetChanged();
             }
         });
+
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -168,6 +178,5 @@ public class reminderfragment extends Fragment {
                 aux.add(reminderList.get(i));
         adaptor.notifyDataSetChanged();
     }
-
 
 }
