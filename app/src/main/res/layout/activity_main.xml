@@ -10,7 +10,7 @@
     <devlight.io.library.ntb.NavigationTabBar
         android:id="@+id/ntb"
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         app:ntb_active_color="@color/white"
         app:ntb_animation_duration="400"

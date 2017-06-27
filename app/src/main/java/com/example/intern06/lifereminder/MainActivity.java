@@ -51,31 +51,17 @@ public class MainActivity extends AppCompatActivity {
                 new NavigationTabBar.Model.Builder(
                         getResources().getDrawable(R.drawable.alarm), R.color.black
 
-                ).title("Heart")
+                ).title("Home")
                         .badgeTitle("NTB")
                         .build()
         );
-        models.add(
-                new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.notepad),
-                        R.color.black
-                ).title("Cup")
-                        .badgeTitle("with")
-                        .build()
-        );
-        models.add(
-                new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.news),
-                        R.color.black
-                ).title("Diploma")
-                        .badgeTitle("state")
-                        .build()
-        );
+
+
         models.add(
                 new NavigationTabBar.Model.Builder(
                         getResources().getDrawable(R.drawable.user),
                         R.color.black
-                ).title("Flag")
+                ).title("Profil")
                         .badgeTitle("icon")
                         .build()
         );
@@ -103,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
-        private int NUM_ITEMS = 4;
+        private int NUM_ITEMS = 2;
 
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -121,11 +107,8 @@ public class MainActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     return reminderfragment.newInstance();
+
                 case 1:
-                    return notes.newInstance();
-                case 2:
-                    return recomand.newInstance();
-                case 3:
                     return profil.newInstance();
                 default:
                     return null;

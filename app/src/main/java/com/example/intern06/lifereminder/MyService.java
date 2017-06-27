@@ -18,6 +18,7 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.example.intern06.lifereminder.obiecte.reminder;
+import com.example.intern06.lifereminder.sql.ReminderDatabase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,36 +49,18 @@ public class MyService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        FirebaseDatabase.getInstance().getReference().child("Reminder").child(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()).limitToLast(5).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                lista.clear();
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    reminder aux = ds.getValue(reminder.class);
-                    lista.add(aux);
-                }
-                Collections.reverse(lista);
-                String a = "";
-                for (int i = 0; i < lista.size(); i++) {
-                    a += lista.get(i).getText() + "\n";
-                }
-                if(lista.size()!=0) {
-                    notif(lista.get(0).getText(), a);
-                }
-            }
+        lista.clear();
+        lista = new ReminderDatabase(this).getReminders();
+        Collections.reverse(lista);
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+        if (lista.size() != 0) {
+            notif(lista.get(0).getText(), "");
+        }
 
-            }
-        });
 
     }
 
-   /* @Override
-    public int onStartCommand(Intent intent, @IntDef(value = {Service.START_FLAG_REDELIVERY, Service.START_FLAG_RETRY}, flag = true) int flags, int startId) {
-        return super.onStartCommand(intent, flags, startId);
-    } */
+
 
     private void notif(String text, String text2) {
 
